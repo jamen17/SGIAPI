@@ -2,18 +2,16 @@ from django.db import models
 
 # Create your models here.
 
-
-
 class Empresa(models.Model):
     nombre = models.CharField(max_length=100)
     tipoId = models.CharField(max_length=20)
     identificacion = models.CharField(max_length=20,unique=True)
-    tipoPersona = models.CharField(max_length=20)
     regimen = models.CharField(max_length=20)
-    web = models.CharField(max_length=20)
-    correo = models.CharField(max_length=20)
-    logo = models.CharField(max_length=50)
+    web = models.CharField(max_length=50)
+    correo = models.CharField(max_length=50)
+    logo = models.CharField(max_length=150)
     creacion = models.DateTimeField(auto_now=True)
+
 
 class Sucursal(models.Model):
     empresa = models.ForeignKey(Empresa,on_delete=models.PROTECT)
@@ -30,6 +28,15 @@ class Dependencia(models.Model):
     nombre = models.CharField(max_length=50)
 
 class Cargo(models.Model):
+    dependencia = models.ForeignKey(Dependencia,on_delete=models.PROTECT)
     nombre = models.CharField(max_length=50)
+    salario = models.IntegerField(default=0)
+    horas = models.IntegerField(default=0)
+
+class Competencia(models.Model):
+    cargo = models.ForeignKey(Cargo,on_delete=models.PROTECT)
+    competencia = models.CharField(max_length=150)
+
+
 
 

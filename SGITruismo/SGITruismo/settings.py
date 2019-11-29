@@ -28,7 +28,7 @@ DEBUG = True
 AUTH_USER_MODEL = 'usuarios.CustomUser'
 ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_METHODS = ['DELETE','GET','OPTIONS','PATCH','POST','PUT',]
+CORS_ALLOW_METHODS = ['GET','OPTIONS','PATCH','POST','PUT',]
 
 # Application definition
 
@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework.authtoken',
     'usuarios.apps.UsuariosConfig',
+    'empleado.apps.EmpleadoConfig',
+    'upload.apps.UploadConfig'
 ]
 
 MIDDLEWARE = [
@@ -134,7 +136,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
-
+MEDIA_URL = '/home/jamodev/uploadjango/'
+MEDIA_ROOT = '/home/jamodev/uploadjango'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],

@@ -9,12 +9,12 @@ class Persona(models.Model):
     nombres = models.CharField(max_length=50)
     apellido1 = models.CharField(max_length=50)
     apellido2 = models.CharField(max_length=50)
-    identificacion = models.CharField(primary_key=True)
-    tipoPersona = models.CharField(max_lengt=20)#Natural,Juridica.CharField(max_length=100
-    clasePersona = models.CharField(max_length=20)#Empleado,Aspirante.CharField(max_length=100
+    identificacion = models.CharField(max_length=10,unique=True)
+    tipoPersona =models.CharField(max_length=20)
+    clasePersona = models.CharField(max_length=20)
     direccion = models.CharField(max_length=100)
     telefono1 = models.CharField(max_length=20)
-    telefono2 = models.CharField(max_length=20,default=0)
+    telefono2 = models.CharField(max_length=20, default=0)
     email = models.EmailField()
     creacion = models.DateTimeField(auto_now=True)
 
